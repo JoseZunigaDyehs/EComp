@@ -194,7 +194,11 @@ label {
     height: 100vh;
 }
 
-form {
+.c-red{
+    color: #ec495c;
+}
+
+#form {
     opacity: 0;
 }
 

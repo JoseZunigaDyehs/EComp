@@ -8,45 +8,21 @@ import 'moment/locale/es'
 
 const validate = (values) => {
   const errors = {}
-
-  if (!values.diasPago) {
-    errors.diasPago = 'Requerido'
-  }
+  debugger
+  if(document.getElementsByClassName)
+  // if (!values.RecibistePago) {
+  //   errors.RecibistePago = 'Requerido'
+  // }
   if (!values.sugerencias) {
     errors.sugerencias = 'Requerido'
   }
   if(!values.nombreEvaluacion){
-    debugger
     if(document.getElementById('errorNombreEvaluacion')!==null){
       document.getElementById('errorNombreEvaluacion').innerText='Requerido'
     }
 
     
   }
-
-
-
-
-
-
-
-  // if (!values.username) {
-  //   errors.username = 'Required'
-  // } else if (values.username.length > 15) {
-  //   errors.username = 'Must be 15 characters or less'
-  // }
-  // if (!values.email) {
-  //   errors.email = 'Required'
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //   errors.email = 'Invalid email address'
-  // }
-  // if (!values.age) {
-  //   errors.age = 'Required'
-  // } else if (isNaN(Number(values.age))) {
-  //   errors.age = 'Must be a number'
-  // } else if (Number(values.age) < 18) {
-  //   errors.age = 'Sorry, you must be at least 18 years old'
-  // }
   return errors
 }
 
@@ -77,11 +53,11 @@ const renderRadio = ({ input, idError, label, type, id, meta: { touched, error, 
     </div>
   )
 
-const renderTextarea = ({ label, name, meta: { touched, error, warning } }) =>
+const renderTextarea = ({ input, label, meta: { touched, error, warning } }) =>
   (
     <div className='mb-5'>
       <p className='fnt-14 c-gris mb-3 f-w-500'>{label}</p>
-      <textarea name='sugerencias' className='w-100' cols="20" rows="10">
+      <textarea {...input} className='w-100' cols="20" rows="10">
       </textarea>
       {touched &&
         ((error && <span>{error}</span>) ||
@@ -186,10 +162,10 @@ class EvaluacionForm1 extends Component {
           </div>
         </div>
 
-        <Field name="" component={renderTextarea} label='Cuéntanos si tienes sugerencias o si tuviste algún problema.' />
+        <Field name="sugerencias" component={renderTextarea} label='Cuéntanos si tienes sugerencias o si tuviste algún problema.' />
 
         <div className='mb-5 align-items-center d-flex'>
-          <button type="submit" className='btn btn-primary px-5 py-4 mr-3 f-w-500' disabled={submitting}>EVALUAR</button>
+          <button type="submit" className='btn btn-primary px-5 py-4 mr-3 f-w-500' disabled={submitting} onClick={validate}>EVALUAR</button>
           <button type="submit" className='btn btn-ghost px-5 py-4 f-w-500' disabled={pristine || submitting} onClick={reset}>CANCELAR</button>
         </div>
 
