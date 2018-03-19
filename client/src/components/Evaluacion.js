@@ -1,24 +1,10 @@
-import React from 'react'
-import EvaluacionForm from './forms/EvaluacionForm'
+import React, { Component } from 'react'
+import EvaluacionForm1 from './forms/EvaluacionForm1'
+import EvaluacionForm2 from './forms/EvaluacionForm2'
+import EvaluacionForm3 from './forms/EvaluacionForm3'
 import SyncValidationForm from './forms/ValidateEvaluacionForm'
+import { connect } from 'react-redux'
 
-// const RecibistePago = () => (
-//   <div className='mb-5'>
-//     <label className='fnt-20 mb-3'>¿Recibiste el pago por esta venta?</label>
-//     <div className="custom-control custom-radio mb-3">
-//       <input type="radio" id="customRadio" name="RecibistePago" className="custom-control-input" />
-//       <label className="custom-control-label" htmlFor="customRadio">Sí, ya lo recibí.</label>
-//     </div>
-//     <div className="custom-control custom-radio mb-3">
-//       <input type="radio" id="customRadio2" name="RecibistePago" className="custom-control-input" />
-//       <label className="custom-control-label" htmlFor="customRadio2">No, el servicio aún se está ejecutando.</label>
-//     </div>
-//     <div className="custom-control custom-radio mb-3">
-//       <input type="radio" id="customRadio3" name="RecibistePago" className="custom-control-input" />
-//       <label className="custom-control-label" htmlFor="customRadio3">No, el comprador está atrasado con el pago.</label>
-//     </div>
-//   </div>
-// )
 
 // const DiasPago = () => (
 //   <div className='mb-5'>
@@ -114,7 +100,6 @@ import SyncValidationForm from './forms/ValidateEvaluacionForm'
 // )
 
 const funcionForma = (datos) => {
-  console.log(datos);
   // let config = { 'Authorization': 'Token ' + props.props.login.token }
   // axios.post('http://10.0.1.1:8000/ideas/post/',
   //   {
@@ -139,15 +124,96 @@ const funcionForma = (datos) => {
   //   })
 }
 
-const Evaluacion = () => (
-  <section className='container'>
-    <div className='row'>
-      <div className='col-8'>
-        <EvaluacionForm onSubmit={funcionForma} />
-        <SyncValidationForm onSubmit={funcionForma} />
-      </div>
+const RecibistePago = (props) => (
+  <div className='mb-5'>
+    <label className='fnt-20 mb-3'>¿Recibiste el pago por esta venta?</label>
+    <div className="custom-control custom-radio mb-3" onClick={(e) => props.props.cambiarEstado(e, 1)}>
+      <input type="radio" id="customRadio" name="RecibistePago" className="custom-control-input" />
+      <label className="custom-control-label" htmlFor="customRadio">Sí, ya lo recibí.</label>
     </div>
-  </section>
+    <div className="custom-control custom-radio mb-3" onClick={(e) => props.props.cambiarEstado(e, 2)}>
+      <input type="radio" id="customRadio2" name="RecibistePago" className="custom-control-input" />
+      <label className="custom-control-label" htmlFor="customRadio2">No, el servicio aún se está ejecutando.</label>
+    </div>
+    <div className="custom-control custom-radio mb-3" onClick={(e) => props.props.cambiarEstado(e, 3)}>
+      <input type="radio" id="customRadio3" name="RecibistePago" className="custom-control-input" />
+      <label className="custom-control-label" htmlFor="customRadio3">No, el comprador está atrasado con el pago.</label>
+    </div>
+  </div>
 )
 
-export default Evaluacion;
+class Evaluacion extends Component {
+  render() {
+    switch (this.props.formulario) {
+      case 1:
+        return (
+          <section className='container' id='inicio'>
+            <div className='row'>
+              <div className='col-md-8 mt-5 h-100vh'>
+                <RecibistePago props={this.props} />
+                <EvaluacionForm1 onSubmit={funcionForma} formulario={this.props.formulario} />
+                {/* <SyncValidationForm onSubmit={funcionForma} /> */}
+              </div>
+            </div>
+          </section>
+        )
+        break;
+      case 2:
+        return (
+          <section className='container' id='inicio'>
+            <div className='row'>
+              <div className='col-md-8 mt-5 h-100vh'>
+                <RecibistePago props={this.props} />
+                <EvaluacionForm2 onSubmit={funcionForma} formulario={this.props.formulario} />
+                {/* <SyncValidationForm onSubmit={funcionForma} /> */}
+              </div>
+            </div>
+          </section>
+        )
+        break;
+      case 3:
+        return (
+          <section className='container' id='inicio'>
+            <div className='row'>
+              <div className='col-md-8 mt-5 h-100vh'>
+                <RecibistePago props={this.props} />
+                <EvaluacionForm3 onSubmit={funcionForma} formulario={this.props.formulario} />
+                {/* <SyncValidationForm onSubmit={funcionForma} /> */}
+              </div>
+            </div>
+          </section>
+        )
+        break;
+
+      default:
+      return (
+        <section className='container' id='inicio'>
+          <div className='row'>
+            <div className='col-md-8 mt-5 h-100vh'>
+              <RecibistePago props={this.props} />
+              {/* <EvaluacionForm3 onSubmit={funcionForma} formulario={this.props.formulario} /> */}
+              {/* <SyncValidationForm onSubmit={funcionForma} /> */}
+            </div>
+          </div>
+        </section>
+      )
+        break;
+    }
+
+  }
+}
+
+let contador = 0;
+
+const mapStateToProps = (state) => ({
+  formulario: state.formulario,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  cambiarEstado: (e, estado) => {
+    estado = parseInt(estado)
+    dispatch({ type: 'SET_ESTADO_FORM', data: estado })
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Evaluacion)

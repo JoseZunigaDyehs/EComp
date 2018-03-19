@@ -1,7 +1,7 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #252525 !important;
-  overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    color: #252525 !important;
+    overflow-x: hidden;
 }
 
 h1,
@@ -10,213 +10,292 @@ h2 {
 }
 
 p {
-  font-size: 16px;
-  font-weight: 300;
-  margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
 }
+
 .btn-primary {
-  letter-spacing: 2px;
-  color: #fff;
-  background-color: #19a397;
-  border-color: #19a397;
+    letter-spacing: 2px;
+    color: #fff;
+    background-color: #19a397;
+    border-color: #19a397;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #116b63;
-  border-color: #19a397;
+    color: #fff;
+    background-color: #116b63;
+    border-color: #19a397;
 }
 
 .btn-ghost {
-  letter-spacing: 2px;
-  color: #19a397;
-  background-color: #fff;
-  border-color: #fff;
+    letter-spacing: 2px;
+    color: #19a397;
+    background-color: #fff;
+    border-color: #fff;
 }
 
 .btn-ghost:hover {
-  color: #19a397;
-  background-color: #fff;
-  border-color: #fff;
+    color: #19a397;
+    background-color: #fff;
+    border-color: #fff;
 }
 
 .btn-secondary {
-  letter-spacing: 2px;
-  color: #ec495c;
-  background-color: #fff;
-  border: 2px solid #ec495c;
-  font-weight: 500;
+    letter-spacing: 2px;
+    color: #ec495c;
+    background-color: #fff;
+    border: 2px solid #ec495c;
+    font-weight: 500;
 }
 
 .btn-secondary:hover {
-  color: #fff;
-  background-color: #ec495c;
-  border-color: #ec495c;
+    color: #fff;
+    background-color: #ec495c;
+    border-color: #ec495c;
 }
 
 .btn-white {
-  letter-spacing: 2px;
-  color: #fff;
-  background-color: #ec495c;
-  border: 2px solid #fff;
-  font-weight: 500;
+    letter-spacing: 2px;
+    color: #fff;
+    background-color: #ec495c;
+    border: 2px solid #fff;
+    font-weight: 500;
 }
 
 .btn-white:hover {
-  color: #ec495c;
-  background-color: #fff;
-  border-color: #fff;
+    color: #ec495c;
+    background-color: #fff;
+    border-color: #fff;
 }
 
 .btn-primary.focus,
 .btn-secondary:focus {
-  box-shadow: #19a397;
+    box-shadow: #19a397;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #19a397;
-  border-color: #19a397;
+    color: #fff;
+    background-color: #19a397;
+    border-color: #19a397;
 }
 
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
-  color: #fff;
-  background-color: #ec495c;
-  border-color: #ec495c;
+    color: #fff;
+    background-color: #ec495c;
+    border-color: #ec495c;
 }
 
 .link-pri {
-  color: #19a397;
+    color: #19a397;
 }
 
 .link-pri:hover {
-  color: #0a5d55;
-  text-decoration: none;
+    color: #0a5d55;
+    text-decoration: none;
 }
 
 .link-sec {
-  color: #fff;
+    color: #fff;
 }
 
 .link-sec:hover {
-  color: #fff;
-  /* //text-decoration: none; */
+    color: #fff;
+    /* //text-decoration: none; */
 }
 
 .link-tri {
-  color: #737f85;
+    color: #737f85;
 }
 
 .link-tri:hover {
-  text-decoration: none;
-  color: #ec495c;
+    text-decoration: none;
+    color: #ec495c;
 }
 
-label{
-  font-size: 18px;
-  letter-spacing: 0.5px;
+label {
+    font-size: 18px;
+    letter-spacing: 0.5px;
 }
 
 *:hover,
 *:active,
 *:focus,
 *:hover {
-  -webkit-transition: all 400ms ease;
-  transition: all 400ms ease;
+    -webkit-transition: all 400ms ease;
+    transition: all 400ms ease;
 }
 
 .f-w-900 {
-  font-weight: 900;
+    font-weight: 900;
 }
 
 .f-w-700 {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .f-w-300 {
-  font-weight: 300;
+    font-weight: 300;
 }
 
 .f-w-500 {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .fnt-14 {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .fnt-12 {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .fnt-20 {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .fnt-24 {
-  font-size: 24px;
+    font-size: 24px;
 }
 
-.fnt-38{
-  font-size: 38px;
+.fnt-38 {
+    font-size: 38px;
 }
 
 .l-s-1 {
-  letter-spacing: 1px;
+    letter-spacing: 1px;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .linea-black {
-  border-top: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.3) !important;
 }
 
-.c-green{
-  color: #19a397;
+.c-green {
+    color: #19a397;
 }
 
-.c-gris{
-  color: #767676;
+.c-gris {
+    color: #767676;
 }
 
-.bg-green{
-  background-color: #e9f6f4;
+.bg-green {
+    background-color: #e9f6f4;
 }
+
+.h-100vh {
+    height: 100vh;
+}
+
+form {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1 !important;
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -ms-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
 
 /*FORM*/
+
 .custom-radio .custom-control-input:checked~.custom-control-label::before {
-  background-color: #19a397;
+    background-color: #19a397;
 }
+
 .custom-control-input:checked~.custom-control-label::before {
-  color: #19a397;
-  background-color: #fff;
+    color: #19a397;
+    background-color: #fff;
 }
-textarea{
-  border-color: rgb(195, 195, 195);
-  min-height: 8rem;
+
+textarea {
+    border-color: rgb(195, 195, 195);
+    min-height: 8rem;
 }
-.stars{
-  color: #19a397;
+
+.stars {
+    color: #19a397;
 }
+
+
 /* .stars p{
   position: absolute;
   bottom: -15px;
   width: 100%;
 } */
-.stars:hover{
-  cursor: pointer;
+
+.stars:hover {
+    cursor: pointer;
 }
-.transp{
-  color: transparent;
+
+.transp {
+    color: transparent;
 }
-.fecha{
-  border: none;
+
+.fecha {
+    border: none;
     border-bottom: 1px solid #4c4c4c;
 }
+
+header {
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    padding: 0.4rem 0.5rem;
+    border-radius: 46px;
+    left: 47%;
+    bottom: 2%;
+    opacity: 0.8;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#19a39d+0,21cec2+100 */
+    background: #19a39d;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #19a39d 0%, #21cec2 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #19a39d 0%, #21cec2 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #19a39d 0%, #21cec2 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#19a39d', endColorstr='#21cec2', GradientType=0);
+    /* IE6-9 */
+}
+
+.arrow:hover {
+    opacity: 1;
+    -webkit-box-shadow: 0px 2px 4px 0px rgb(100, 100, 100);
+    -moz-box-shadow: 0px 2px 4px 0px rgb(100, 100, 100);
+    box-shadow: 0px 2px 4px 0px rgb(100, 100, 100);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#21cec2+0,19a39d+100 */
+    background: #21cec2;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #21cec2 0%, #19a39d 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #21cec2 0%, #19a39d 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #21cec2 0%, #19a39d 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#21cec2', endColorstr='#19a39d', GradientType=0);
+    /* IE6-9 */
+}
+
+
 /*FIN FORM*/
