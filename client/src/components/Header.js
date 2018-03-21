@@ -7,7 +7,7 @@ const Header = () => (
   <header className='container'>
     <div className='row h-100vh align-content-center'>
       <div className='col-md-12'>
-        <h2 className='mb-4'>¿Cómo resultó el negocio con <strong>Ilustre Municipalidad de Linares</strong></h2>
+        <h2 className='mb-4'>¿Cómo resultó el negocio con <strong>Ilustre Municipalidad de Linares</strong>?</h2>
       </div>
       <div className='col-md-6 d-flex text-uppercase'>
         <p className='c-gris fnt-14 f-w-700 l-s-1 mr-1'>ORDEN DE COMPRA: </p>
@@ -33,7 +33,7 @@ const Nav = () => (
 )
 
 const inicio = (e) => {
-  let inicio = document.getElementById('inicio').offsetTop
+  let inicio = window.innerHeight
   scroll.scrollTo(inicio, {duration: 1000, smooth: true});
 }
 export default Header;

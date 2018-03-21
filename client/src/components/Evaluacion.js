@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import EvaluacionForm1 from './forms/EvaluacionForm1'
 import EvaluacionForm1Sin from './forms/EvaluacionForm1Sin'
 import EvaluacionForm2 from './forms/EvaluacionForm2'
 import EvaluacionForm3 from './forms/EvaluacionForm3'
-import SyncValidationForm from './forms/ValidateEvaluacionForm'
 import { connect } from 'react-redux'
 
 
@@ -178,7 +176,7 @@ class Evaluacion extends Component {
             <div className='row'>
               <div className='col-md-8 mt-5 h-100vh'>
                 <RecibistePago props={this.props} />
-                <EvaluacionForm3 onSubmit={funcionForma} formulario={this.props.formulario} />
+                <EvaluacionForm3 formulario={this.props.formulario} />
                 {/* <SyncValidationForm onSubmit={funcionForma} /> */}
               </div>
             </div>
@@ -204,10 +202,8 @@ class Evaluacion extends Component {
   }
 }
 
-let contador = 0;
-
 const mapStateToProps = (state) => ({
-  formulario: state.formulario,
+  formulario: state.formulario
 });
 
 const mapDispatchToProps = (dispatch) => ({

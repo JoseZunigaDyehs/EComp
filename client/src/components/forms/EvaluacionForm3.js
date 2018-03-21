@@ -1,106 +1,31 @@
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import 'react-datepicker/dist/react-datepicker.css'
-import 'moment/locale/es'
+import InputFecha from './InputFecha'
 
-const validate = (values, props) => {
-  const errors = {}
-  debugger
-  console.log(props)
-  switch (props.formulario) {
-    case 1:
-      if (!values.diasPago) {
-        errors.diasPago = 'Requerido'
-      }
-      if (!values.sugerencias) {
-        errors.diasPago = 'Requerido'
-      }
-      break;
-    case 2:
-
-      break;
-    case 3:
-
-      break;
-
-    default:
-      break;
+const validarTodo = () => {
+  let valido = true;
+  // debugger
+  // if (!ValidarFecha()) {
+  //   valido = false;
+  // }
+  if (!ValidarEstrellas()) {
+    valido = false;
   }
-
-
-
-
-
-
-  // if (!values.username) {
-  //   errors.username = 'Required'
-  // } else if (values.username.length > 15) {
-  //   errors.username = 'Must be 15 characters or less'
-  // }
-  // if (!values.email) {
-  //   errors.email = 'Required'
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //   errors.email = 'Invalid email address'
-  // }
-  // if (!values.age) {
-  //   errors.age = 'Required'
-  // } else if (isNaN(Number(values.age))) {
-  //   errors.age = 'Must be a number'
-  // } else if (Number(values.age) < 18) {
-  //   errors.age = 'Sorry, you must be at least 18 years old'
-  // }
-  return errors
+  return valido
 }
 
-const pintarErrorRadios = (error, id) => {
-  document.getElementById(id.idError).innerText = error
+const ValidarEstrellas = () => {
+  let valido = true;
+  let calificacion = document.getElementById('nombreEvaluacion').dataset.calificacion
+  if (calificacion === '0') {
+    document.getElementById('errorNombreEvaluacion').innerText = 'Requerido'
+    valido = false;
+  }else{
+    document.getElementById('errorNombreEvaluacion').innerText = ''
+  }
+  return valido
 }
-
-const renderField = ({ input, label, type, meta: { touched, error, warning } }) =>
-  (
-    <div>
-      <label>{label}</label>
-      <div>
-        <input {...input} placeholder={label} type={type} />
-        {touched &&
-          ((error && <span>{error}</span>) ||
-            (warning && <span>{warning}</span>))}
-      </div>
-    </div>
-  )
-
-const renderRadio = ({ input, idError, label, type, id, meta: { touched, error, warning } }) =>
-  (
-    <div className="custom-control custom-radio mb-3">
-      <input id={id} name="RecibistePago" className="custom-control-input" type={type} />
-      <label className="custom-control-label" htmlFor={id}>{label}</label>
-      {touched &&
-        (error && pintarErrorRadios(error, { idError }))}
-    </div>
-  )
-
-const renderTextarea = ({ label, name, meta: { touched, error, warning } }) =>
-  (
-    <div className='mb-5'>
-      <p className='fnt-14 c-gris mb-3 f-w-500'>{label}</p>
-      <textarea name='sugerencias' className='w-100' cols="20" rows="10">
-      </textarea>
-      {touched &&
-        ((error && <span>{error}</span>) ||
-          (warning && <span>{warning}</span>))}
-    </div>
-  )
-
-const renderDatePicker = ({ input, placeholder, defaultValue, meta: { touched, error } }) => (
-  <div>
-    <DatePicker className='fecha mb-5' {...input} dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} />
-    {touched && error && <span>{error}</span>}
-  </div>
-);
-
 
 const overStar = (e) => {
   const valor = e.currentTarget.dataset.star
@@ -147,25 +72,48 @@ const leaveStar = (e) => {
 class EvaluacionForm3 extends Component {
 
   render() {
-    const { handleSubmit, pristine, reset, submitting, formulario } = this.props
 
-    if (document.getElementsByTagName('form').length !== 0 && document.getElementsByTagName('form')['0'].classList.contains('fade-in')) {
-      document.getElementsByTagName('form')['0'].classList.remove('fade-in')
+    if (document.getElementById('form') !== null  && document.getElementById('form').classList.contains('fade-in')) {
+      document.getElementById('form').classList.remove('fade-in')
     }
     setTimeout(() => {
-      if (document.getElementsByTagName('form').length !== 0) {
-        document.getElementsByTagName('form')['0'].classList.add('fade-in')
+      if (document.getElementById('form') !== null ) {
+        document.getElementById('form').classList.add('fade-in')
       }
     }, 10);
 
     return (
-      <form onSubmit={handleSubmit} style={{ opacity: '0' }} data-formuario={this.props.formulario}>
+      <div id='form' style={{ opacity: '0' }} data-formuario={this.props.formulario}>
 
         <div className='mb-5 '>
           <label className='fnt-20 mb-3'>¿Cuándo deberías haber recibido el pago?</label>
-          <div>
+          <div className='mb-5'>
             <p className='fnt-14 c-gris f-w-500'>Fecha</p>
-            <Field name="haberRecibido" component={renderDatePicker} dateFormat="DD.MM.YYYY" showYearDropdown="{true}" />
+            <InputFecha id='haberRecibido'/>
+            {/* <Field id="haberRecibido" name='haberRecibido' component={renderDatePicker} dateFormat="DD.MM.YYYY" showYearDropdown="{true}" /> */}
+            <p id='errorTerminaEjecutarse' className='c-red'></p>
+          </div>
+          <div className='mb-5'>
+            <label className='fnt-20 mb-3'>¿Cómo calificarías tu <strong>experiencia </strong> con Ilustre Municipalidad de Linares?</label>
+            <div className='stars d-flex align-items-center'>
+              <div data-star='1' className='position-relative d-flex flex-column justify-content-center align-items-center mr-3' onMouseOver={overStar} onMouseLeave={leaveStar}>
+                <i className="mb-2 fas fa-star fnt-38 f-w-300"></i>
+              </div>
+              <div data-star='2' className='position-relative d-flex flex-column justify-content-center align-items-center mr-3' onMouseOver={overStar} onMouseLeave={leaveStar}>
+                <i className="mb-2 fas fa-star fnt-38 f-w-300"></i>
+              </div>
+              <div data-star='3' className='position-relative d-flex flex-column justify-content-center align-items-center mr-3' onMouseOver={overStar} onMouseLeave={leaveStar}>
+                <i className="mb-2 fas fa-star fnt-38 f-w-300"></i>
+              </div>
+              <div data-star='4' className='position-relative d-flex flex-column justify-content-center align-items-center mr-3' onMouseOver={overStar} onMouseLeave={leaveStar}>
+                <i className="mb-2 fas fa-star fnt-38 f-w-300 "></i>
+              </div>
+              <div data-star='5' className='position-relative d-flex flex-column justify-content-center align-items-center mr-3' onMouseOver={overStar} onMouseLeave={leaveStar}>
+                <i className="mb-2 fas fa-star fnt-38 f-w-300"></i>
+              </div>
+              <p className='ml-2 fnt-14 f-w-700 l-s-1 c-gris transp' id='nombreEvaluacion' data-calificacion='0'>EXCELENTE</p>
+            </div>
+            <p className='c-red' id='errorNombreEvaluacion'></p>
           </div>
           <div className='bg-green p-3'>
             <p>Te volveremos a contactar en 15 días para verificar si el pago sigue atrasado o fue realizado.</p>
@@ -173,11 +121,11 @@ class EvaluacionForm3 extends Component {
         </div>
 
         <div className='mb-5 align-items-center'>
-          <button type="submit" className='btn btn-primary px-5 py-4 mr-3 f-w-500' disabled={submitting}>EVALUAR</button>
-          <button type="submit" className='btn btn-ghost px-5 py-4 f-w-500' disabled={pristine || submitting} onClick={reset}>CANCELAR</button>
+          <button className='btn btn-primary px-5 py-4 mr-3 f-w-500' onClick={validarTodo}>EVALUAR</button>
+          {/* <button type="submit" className='btn btn-ghost px-5 py-4 f-w-500' >CANCELAR</button> */}
         </div>
 
-      </form>
+      </div>
     )
 
   }
@@ -196,6 +144,5 @@ const EvaluacionFormRedux = connect(
 )(EvaluacionForm3);
 
 export default reduxForm({
-  form: 'EvaluacionForm3',
-  validate
+  form: 'EvaluacionForm2'
 })(EvaluacionFormRedux)
